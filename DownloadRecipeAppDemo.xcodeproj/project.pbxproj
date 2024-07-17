@@ -3,8 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		B1B980792C480460009D0A28 /* RecipeScraper in Frameworks */ = {isa = PBXBuildFile; productRef = B1B980782C480460009D0A28 /* RecipeScraper */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		B1B9805B2C480404009D0A28 /* PBXContainerItemProxy */ = {
@@ -40,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B980792C480460009D0A28 /* RecipeScraper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +105,7 @@
 			);
 			name = DownloadRecipeAppDemo;
 			packageProductDependencies = (
+				B1B980782C480460009D0A28 /* RecipeScraper */,
 			);
 			productName = DownloadRecipeAppDemo;
 			productReference = B1B980482C480403009D0A28 /* DownloadRecipeAppDemo.app */;
@@ -183,6 +189,9 @@
 				Base,
 			);
 			mainGroup = B1B9803F2C480403009D0A28;
+			packageReferences = (
+				B1B980772C480460009D0A28 /* XCRemoteSwiftPackageReference "RecipeScraper" */,
+			);
 			productRefGroup = B1B980492C480403009D0A28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -545,6 +554,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B1B980772C480460009D0A28 /* XCRemoteSwiftPackageReference "RecipeScraper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ausra/RecipeScraper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B1B980782C480460009D0A28 /* RecipeScraper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1B980772C480460009D0A28 /* XCRemoteSwiftPackageReference "RecipeScraper" */;
+			productName = RecipeScraper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B1B980402C480403009D0A28 /* Project object */;
 }

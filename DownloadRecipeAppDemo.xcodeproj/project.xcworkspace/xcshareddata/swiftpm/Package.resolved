@@ -1,0 +1,33 @@
+{
+  "originHash" : "46596a43d03e6085f4b88b1c2398fe374bca8c3142b50ed085c88f2996f9e9ea",
+  "pins" : [
+    {
+      "identity" : "jsonlddecoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Ausra/JSONLDDecoder.git",
+      "state" : {
+        "revision" : "1b2514a54c27fb6e108126c23ca2e449be7478b2",
+        "version" : "1.0.8"
+      }
+    },
+    {
+      "identity" : "recipescraper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Ausra/RecipeScraper.git",
+      "state" : {
+        "revision" : "6853f49fb849bc668f0a8d472178c3a3da2b5d10",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup.git",
+      "state" : {
+        "revision" : "028487d4a8a291b2fe1b4392b5425b6172056148",
+        "version" : "2.7.2"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -1,12 +1,6 @@
-//
-//  ContentView.swift
-//  DownloadRecipeAppDemo
-//
-//  Created by Ausra Balyne on 17/07/2024.
-//
-
 import SwiftUI
 import SwiftData
+import RecipeScraper
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
