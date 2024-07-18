@@ -24,11 +24,9 @@ final class Recipe {
     var headerImage: HeaderImage?
 
     var recipeAuthor: String = ""
-    var recipeSource: String = ""
     var totalCookTime: String = ""
     var prepTime: String = ""
     var cookTime: String = ""
-    var calories: String = ""
 
     init(
         id: UUID = UUID(),
@@ -39,11 +37,9 @@ final class Recipe {
         steps: [Step]? = [],
         headerImage: HeaderImage? = nil,
         recipeAuthor: String = "",
-        recipeSource: String = "",
         totalCookTime: String = "",
         prepTime: String = "",
-        cookTime: String = "",
-        calories: String = ""
+        cookTime: String = ""
     ) {
         self.id = id
         self.createdAt = createdAt
@@ -53,11 +49,9 @@ final class Recipe {
         self.steps = steps
         self.headerImage = headerImage
         self.recipeAuthor = recipeAuthor
-        self.recipeSource = recipeSource
         self.totalCookTime = totalCookTime
         self.prepTime = prepTime
         self.cookTime = cookTime
-        self.calories = calories
     }
 }
 
@@ -75,6 +69,17 @@ extension Recipe {
     convenience init(from parsedRecipe: ParsedRecipe) async {
         self.init()
         self.title = parsedRecipe.name ?? "Unknown Title"
+        self.recipeAuthor = parsedRecipe.author ?? ""
+        self.totalCookTime = parsedRecipe.totalTime ?? ""
+        self.prepTime = parsedRecipe.prepTime ?? ""
+        self.cookTime =  parsedRecipe.cookTime ?? ""
+
+        if let recipeYield = parsedRecipe.recipeYield, let recipeYieldFirst = recipeYield.first, let servings = Int(recipeYieldFirst) {
+
+            self.servings = servings
+        } else {
+            self.servings = 1
+        }
 
         if let ingredientContents = parsedRecipe.ingredients {
             self.ingredients = ingredientContents.map { Ingredient(contents: $0, recipe: self) }
