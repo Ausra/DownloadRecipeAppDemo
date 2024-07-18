@@ -6,6 +6,7 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import RecipeScraper
 
 @Model
 final class Recipe {
@@ -67,5 +68,12 @@ extension Recipe {
         } else {
             return nil
         }
+    }
+}
+
+extension Recipe {
+    convenience init(from parsedRecipe: ParsedRecipe) {
+        self.init()
+        self.title = parsedRecipe.name ?? "Unknown Title"
     }
 }

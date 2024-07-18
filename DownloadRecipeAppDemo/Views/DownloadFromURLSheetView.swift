@@ -2,10 +2,11 @@ import SwiftUI
 import RecipeScraper
 
 struct DownloadFromURLSheetView: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
 
     @State private var url: String = ""
-    @State private var recipe: ParsedRecipe?
+    @State private var recipe: Recipe?
     @State private var errorMessage: String?
     @State private var isLoading: Bool = false
 
@@ -79,7 +80,8 @@ struct DownloadFromURLSheetView: View {
 
         do {
             let scrapedRecipe = try await scraper.scrapeRecipe(from: validURL.absoluteString)
-            self.recipe = scrapedRecipe
+            self.recipe = Recipe(from: scrapedRecipe)
+
             self.errorMessage = nil
         } catch {
             self.errorMessage = error.localizedDescription
@@ -87,6 +89,10 @@ struct DownloadFromURLSheetView: View {
         }
 
         isLoading = false
+        if let newRecipe = recipe {
+            modelContext.insert(newRecipe)
+            dismiss()
+        }
     }
 }
 

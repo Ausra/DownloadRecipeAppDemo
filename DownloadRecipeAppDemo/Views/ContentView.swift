@@ -9,37 +9,41 @@ struct ContentView: View {
     @State private var downloadRecipeSheetPresent: Bool = false
 
     var body: some View {
-        NavigationSplitView(sidebar: {
-            List {
-                ForEach(recipes) { recipe in
-                    NavigationLink {
-                        Text(recipe.title)
-                    } label: {
-                        Text(recipe.title)
+        NavigationSplitView(
+            sidebar: {
+                List {
+                    ForEach(recipes) { recipe in
+                        NavigationLink {
+                            Text(recipe.title)
+                        } label: {
+                            Text(recipe.title)
+                        }
+                    }
+                    .onDelete(perform: deleteItems)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
+                    ToolbarItem {
+                        Button(action: addItem) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
                 }
-                .onDelete(perform: deleteItems)
+
+            },
+            detail: {
+                Text("Select an item")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        }, detail: {
-            Text("Select an item")
-        })
+        ).sheet(
+            isPresented: $downloadRecipeSheetPresent,
+            content: { DownloadFromURLSheetView() }
+        )
     }
 
     private func addItem() {
-        withAnimation {
-            let newItem = Recipe(title: "new")
-            modelContext.insert(newItem)
-        }
+        downloadRecipeSheetPresent = true
     }
 
     private func deleteItems(offsets: IndexSet) {

@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Ausra/RecipeScraper.git",
       "state" : {
-        "revision" : "9b7b22b9cc56d51bd642059fd2f23de317c031f2",
-        "version" : "1.0.6"
+        "revision" : "0c291434dfea56d4756fb1e6ff01805604a3a692",
+        "version" : "1.0.7"
       }
     },
     {
