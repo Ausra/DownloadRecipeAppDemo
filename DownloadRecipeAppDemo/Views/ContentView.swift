@@ -9,7 +9,7 @@ struct ContentView: View {
     @State private var downloadRecipeSheetPresent: Bool = false
 
     var body: some View {
-        NavigationSplitView {
+        NavigationSplitView(sidebar: {
             List {
                 ForEach(recipes) { recipe in
                     NavigationLink {
@@ -30,9 +30,9 @@ struct ContentView: View {
                     }
                 }
             }
-        } detail: {
+        }, detail: {
             Text("Select an item")
-        }
+        })
     }
 
     private func addItem() {

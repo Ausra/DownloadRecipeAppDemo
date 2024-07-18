@@ -8,7 +8,7 @@ import SwiftData
 
 @Model
 final class Ingredient {
-    let id: UUID = UUID()
+    var id: UUID = UUID()
     var createdAt: Date = Date()
 
     var contents: String = ""

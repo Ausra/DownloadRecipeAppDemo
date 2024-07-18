@@ -7,54 +7,86 @@ struct DownloadFromURLSheetView: View {
     @State private var url: String = ""
     @State private var recipe: ParsedRecipe?
     @State private var errorMessage: String?
+    @State private var isLoading: Bool = false
 
     @FocusState private var isFocused: Bool
 
     var body: some View {
-        Form {
-            Section(
-                content: {
-                    TextField("Paste the link", text: $url)
-                        .focused($isFocused)
-                },
-                footer: { Text("Paste in the direct link to the recipe and tap Download to save your recipe")})
-        }
-        .onAppear(perform: {
-            isFocused = true
-        })
-        .toolbar(content: {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Download", action: {
-                    Task {
-                        await scrapeRecipe()
+        NavigationStack {
+            Form {
+                if let errorMessage = errorMessage {
+                    Section {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .accessibilityLabel("Error message")
                     }
-                })
-            }
-            ToolbarItem(
-                placement: .cancellationAction,
-                content: {
-                    Button("Cancel", action: {
-                        dismiss()
+                }
+                Section(
+                    content: {
+                        TextField("Enter the link", text: $url)
+                            .focused($isFocused)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .keyboardType(.URL)
+                            .accessibilityLabel("Recipe URL")
+                            .accessibilityHint("Type the URL of the recipe you want to download")
+                    },
+                    footer: {
+                        Text("Type the direct link to the recipe and tap Download to save your recipe")
                     })
+            }
+            .navigationTitle("Download Recipe")
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear(perform: {
+                isFocused = true
+            })
+            .toolbar(
+                content: {
+                    ToolbarItem(placement: .confirmationAction) {
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Button("Download") {
+                                Task {
+                                    await scrapeRecipe()
+                                }
+                            }
+                        }
+                    }
+                    ToolbarItem(
+                        placement: .cancellationAction,
+                        content: {
+                            Button("Cancel", action: {
+                                dismiss()
+                            })
+                        })
                 })
-        })
+
+        }
+
     }
 
+    @MainActor
     private func scrapeRecipe() async {
+        guard !url.isEmpty, let validURL = URL(string: url) else {
+            self.errorMessage = "Please enter a valid URL."
+            return
+        }
+
+        isLoading = true
+
         let scraper = RecipeScraper()
 
         do {
-            let scrapedRecipe = try await scraper.scrapeRecipe(from: url)
-            DispatchQueue.main.async {
-                self.recipe = scrapedRecipe
-                self.errorMessage = nil
-            }
+            let scrapedRecipe = try await scraper.scrapeRecipe(from: validURL.absoluteString)
+            self.recipe = scrapedRecipe
+            self.errorMessage = nil
         } catch {
-            DispatchQueue.main.async {
-                self.errorMessage = error.localizedDescription
-                self.recipe = nil
-            }
+            self.errorMessage = error.localizedDescription
+            self.recipe = nil
         }
+
+        isLoading = false
     }
 }
 

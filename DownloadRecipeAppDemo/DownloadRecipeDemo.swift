@@ -1,10 +1,3 @@
-//
-//  DownloadRecipeAppDemoApp.swift
-//  DownloadRecipeAppDemo
-//
-//  Created by Ausra Balyne on 17/07/2024.
-//
-
 import SwiftUI
 import SwiftData
 

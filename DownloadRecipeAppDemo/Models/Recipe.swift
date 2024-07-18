@@ -9,7 +9,7 @@ import SwiftUI
 
 @Model
 final class Recipe {
-    let id: UUID = UUID()
+    var id: UUID = UUID()
     var createdAt: Date = Date()
     var title: String = ""
     @Relationship(deleteRule: .cascade, inverse: \Ingredient.recipe)
