@@ -66,7 +66,7 @@ extension Recipe {
 }
 
 extension Recipe {
-    convenience init(from parsedRecipe: ParsedRecipe) async {
+    convenience init(from parsedRecipe: ParsedRecipe, using dataLoader: DataLoader) async {
         self.init()
         self.title = parsedRecipe.name ?? "Unknown Title"
         self.recipeAuthor = parsedRecipe.author ?? ""
@@ -94,7 +94,6 @@ extension Recipe {
         }
 
         if let firstImageUrl = parsedRecipe.images?.first  {
-            let dataLoader = DataLoader()
             do {
                 if let data = try await dataLoader.loadData(from: firstImageUrl) {
                     let headerImage = HeaderImage(data: data, name: URL(string: firstImageUrl)?.lastPathComponent, recipe: self)

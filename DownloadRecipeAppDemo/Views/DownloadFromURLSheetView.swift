@@ -84,12 +84,12 @@ struct DownloadFromURLSheetView: View {
         }
 
         isLoading = true
-
+        let dataLoader = DataLoader()
         let scraper = RecipeScraper()
 
         do {
             let scrapedRecipe = try await scraper.scrapeRecipe(from: validURL.absoluteString)
-            self.recipe = await Recipe(from: scrapedRecipe)
+            self.recipe = await Recipe(from: scrapedRecipe, using: dataLoader)
 
             self.errorMessage = nil
         } catch {
