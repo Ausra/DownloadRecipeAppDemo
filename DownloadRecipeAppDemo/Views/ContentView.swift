@@ -6,6 +6,8 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var recipes: [Recipe]
 
+    @State private var downloadRecipeSheetPresent: Bool = false
+
     var body: some View {
         NavigationSplitView {
             List {

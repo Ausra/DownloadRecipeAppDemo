@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Ausra/JSONLDDecoder.git",
       "state" : {
-        "revision" : "1b2514a54c27fb6e108126c23ca2e449be7478b2",
-        "version" : "1.0.8"
+        "revision" : "7ac23d3d957df5fd98745e5469071d93835d8d12",
+        "version" : "1.0.9"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Ausra/RecipeScraper.git",
       "state" : {
-        "revision" : "6853f49fb849bc668f0a8d472178c3a3da2b5d10",
-        "version" : "1.0.3"
+        "revision" : "9b7b22b9cc56d51bd642059fd2f23de317c031f2",
+        "version" : "1.0.6"
       }
     },
     {
