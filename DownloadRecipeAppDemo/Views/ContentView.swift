@@ -14,7 +14,7 @@ struct ContentView: View {
                 List {
                     ForEach(recipes) { recipe in
                         NavigationLink {
-                            Text(recipe.title)
+                            RecipeDetailView(recipe: recipe)
                         } label: {
                             Text(recipe.title)
                         }
@@ -34,7 +34,7 @@ struct ContentView: View {
 
             },
             detail: {
-                Text("Select an item")
+                Text("recipe.title")
             }
         ).sheet(
             isPresented: $downloadRecipeSheetPresent,
@@ -56,6 +56,8 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Recipe.self, inMemory: true)
+    let container = Recipe.preview
+
+    return ContentView()
+        .modelContainer(container)
 }

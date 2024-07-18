@@ -85,9 +85,9 @@ extension Recipe {
         // adding steps to the recipe
         cottageCheezePie.steps = [step1]
         try? container.mainContext.save()
-        scrambledEggs.steps = [step1, step2, step3, step4, step5, step6]
+        scrambledEggs.steps = [step2, step3, step4]
         try? container.mainContext.save()
-        applePie.steps = [step1, step2, step3]
+        applePie.steps = [step5, step6]
         try? container.mainContext.save()
 
         // MARK: - Image
