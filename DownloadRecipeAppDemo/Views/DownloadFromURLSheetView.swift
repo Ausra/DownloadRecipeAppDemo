@@ -80,7 +80,7 @@ struct DownloadFromURLSheetView: View {
 
         do {
             let scrapedRecipe = try await scraper.scrapeRecipe(from: validURL.absoluteString)
-            self.recipe = Recipe(from: scrapedRecipe)
+            self.recipe = await Recipe(from: scrapedRecipe)
 
             self.errorMessage = nil
         } catch {

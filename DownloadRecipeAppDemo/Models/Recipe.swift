@@ -72,8 +72,32 @@ extension Recipe {
 }
 
 extension Recipe {
-    convenience init(from parsedRecipe: ParsedRecipe) {
+    convenience init(from parsedRecipe: ParsedRecipe) async {
         self.init()
         self.title = parsedRecipe.name ?? "Unknown Title"
+
+        if let ingredientContents = parsedRecipe.ingredients {
+            self.ingredients = ingredientContents.map { Ingredient(contents: $0, recipe: self) }
+        } else {
+            self.ingredients = []
+        }
+
+        if let instructions = parsedRecipe.instructions {
+            self.steps = instructions.map { Step(contents: $0.text ?? "", recipe: self) }
+        } else {
+            self.steps = []
+        }
+
+        if let firstImageUrl = parsedRecipe.images?.first  {
+            let dataLoader = DataLoader()
+            do {
+                if let data = try await dataLoader.loadData(from: firstImageUrl) {
+                    let headerImage = HeaderImage(data: data, name: URL(string: firstImageUrl)?.lastPathComponent, recipe: self)
+                    self.headerImage = headerImage
+                }
+            } catch {
+                print("Failed to download image: \(error)")
+            }
+        }
     }
 }
