@@ -3,7 +3,7 @@ import SwiftData
 
 struct RecipeDetailView: View {
     var recipe: Recipe
-
+    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 10) {
@@ -18,22 +18,30 @@ struct RecipeDetailView: View {
 
 private struct RecipeTitleView: View {
     var title: String
-
+    
     var body: some View {
         Text(title)
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .padding()
+            .accessibilityLabel("Recipe title")
+            .accessibilityValue(title)
     }
 }
 
 private struct RecipeIngredientsView: View {
     var ingredients: [Ingredient]
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Ingredients")
                 .font(.headline)
                 .padding(.bottom, 5)
+                .accessibilityAddTraits(.isHeader)
             ForEach(ingredients) { ingredient in
                 Text(ingredient.contents)
+                    .accessibilityLabel("Ingredient")
+                    .accessibilityValue(ingredient.contents)
             }
         }
         .padding()
@@ -42,14 +50,17 @@ private struct RecipeIngredientsView: View {
 
 private struct RecipeStepsView: View {
     var steps: [Step]
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Steps")
                 .font(.headline)
                 .padding(.bottom, 5)
+                .accessibilityAddTraits(.isHeader)
             ForEach(steps) { step in
                 Text(step.contents)
+                    .accessibilityLabel("Step")
+                    .accessibilityValue(step.contents)
             }
         }
         .padding()
@@ -58,7 +69,7 @@ private struct RecipeStepsView: View {
 
 private struct RecipeImageView: View {
     var image: UIImage?
-
+    
     var body: some View {
         if let uIImage = image {
             Image(uiImage: uIImage)
@@ -67,11 +78,15 @@ private struct RecipeImageView: View {
                 .frame(height: 300)
                 .cornerRadius(10)
                 .padding()
+                .accessibilityLabel("Recipe image")
+                .accessibilityValue("Image of the recipe")
         } else {
             Color.gray
                 .frame(height: 300)
                 .cornerRadius(10)
                 .padding()
+                .accessibilityLabel("Placeholder image")
+                .accessibilityValue("No image available")
         }
     }
 }
@@ -79,13 +94,13 @@ private struct RecipeImageView: View {
 #if DEBUG
 #Preview {
     let container = Recipe.preview
-
+    
     let recipes = try? container.mainContext.fetch(
         FetchDescriptor<Recipe>(
             predicate: #Predicate { recipe in
                 recipe.title == "Cottage Cheeze Pie"
             }))
-
+    
     return RecipeDetailView(recipe: recipes?.first ?? Recipe(title: "no value"))
         .modelContainer(container)
 }

@@ -20,6 +20,7 @@ struct DownloadFromURLSheetView: View {
                         Text(errorMessage)
                             .foregroundColor(.red)
                             .accessibilityLabel("Error message")
+                            .accessibilityHint(errorMessage)
                     }
                 }
                 Section(
@@ -34,6 +35,8 @@ struct DownloadFromURLSheetView: View {
                     },
                     footer: {
                         Text("Type the direct link to the recipe and tap Download to save your recipe")
+                            .accessibilityLabel("URL hint")
+                            .accessibilityHint("Enter a valid URL")
                     })
             }
             .navigationTitle("Download Recipe")
@@ -46,12 +49,16 @@ struct DownloadFromURLSheetView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         if isLoading {
                             ProgressView()
+                                .accessibilityLabel("Loading")
+                                .accessibilityHint("Downloading the recipe")
                         } else {
                             Button("Download") {
                                 Task {
                                     await scrapeRecipe()
                                 }
                             }
+                            .accessibilityLabel("Download")
+                            .accessibilityHint("Download the recipe from the entered URL")
                         }
                     }
                     ToolbarItem(
@@ -60,6 +67,8 @@ struct DownloadFromURLSheetView: View {
                             Button("Cancel", action: {
                                 dismiss()
                             })
+                            .accessibilityLabel("Cancel")
+                            .accessibilityHint("Dismiss the download recipe view")
                         })
                 })
 
