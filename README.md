@@ -1,6 +1,6 @@
 # Download Recipe Demo App
 
-This is a SwiftUI-based application that allows users to manage their recipes. Users can add recipes by downloading them from URLs, view detailed recipe information, and delete recipes. It has been built to show case the [RecipeScraper](https://github.com/Ausra/RecipeScraper) and [JSONLDDecoder](https://github.com/Ausra/JSONLDDecoder) packaged in action. The app also leverages `SwiftData` for data persistence.
+This is a SwiftUI-based application that allows users to manage their recipes. Users can add recipes by downloading them from URLs, view detailed recipe information, and delete recipes. It has been built to showcase the [RecipeScraper](https://github.com/Ausra/RecipeScraper) and [JSONLDDecoder](https://github.com/Ausra/JSONLDDecoder) packages in action. The app also leverages `SwiftData` for data persistence.
 
 ## Features
 
