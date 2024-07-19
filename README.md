@@ -9,6 +9,8 @@ The Recipe App is a SwiftUI-based application that allows users to manage their 
 - **Delete Recipes**: Remove recipes from the app.
 - **Accessibility**: The app includes accessibility features for better usability.
 
+  ![demoApp](https://github.com/Ausra/DownloadRecipeAppDemo/blob/main/DownloadRecipeDemo.gif)
+
 ## Requirements
 - iOS 18.0+
 - Xcode 16.0+
