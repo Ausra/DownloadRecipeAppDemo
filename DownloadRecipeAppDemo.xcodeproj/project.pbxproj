@@ -11,6 +11,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B11787762C4A5B66003BB838 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1B980402C480403009D0A28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B980472C480403009D0A28;
+			remoteInfo = DownloadRecipeAppDemo;
+		};
 		B1B9805B2C480404009D0A28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B1B980402C480403009D0A28 /* Project object */;
@@ -21,16 +28,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B11787702C4A5B66003BB838 /* DownloadRecipeAppDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadRecipeAppDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B980482C480403009D0A28 /* DownloadRecipeAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadRecipeAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B9805A2C480404009D0A28 /* DownloadRecipeAppDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadRecipeAppDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B11787712C4A5B66003BB838 /* DownloadRecipeAppDemoUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DownloadRecipeAppDemoUITests; sourceTree = "<group>"; };
 		B1B9804A2C480403009D0A28 /* DownloadRecipeAppDemo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DownloadRecipeAppDemo; sourceTree = "<group>"; };
 		B1B9805D2C480404009D0A28 /* DownloadRecipeAppDemoTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DownloadRecipeAppDemoTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B117876D2C4A5B66003BB838 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1B980452C480403009D0A28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,6 +70,7 @@
 			children = (
 				B1B9804A2C480403009D0A28 /* DownloadRecipeAppDemo */,
 				B1B9805D2C480404009D0A28 /* DownloadRecipeAppDemoTests */,
+				B11787712C4A5B66003BB838 /* DownloadRecipeAppDemoUITests */,
 				B1B980492C480403009D0A28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +80,7 @@
 			children = (
 				B1B980482C480403009D0A28 /* DownloadRecipeAppDemo.app */,
 				B1B9805A2C480404009D0A28 /* DownloadRecipeAppDemoTests.xctest */,
+				B11787702C4A5B66003BB838 /* DownloadRecipeAppDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +88,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B117876F2C4A5B66003BB838 /* DownloadRecipeAppDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B11787782C4A5B66003BB838 /* Build configuration list for PBXNativeTarget "DownloadRecipeAppDemoUITests" */;
+			buildPhases = (
+				B117876C2C4A5B66003BB838 /* Sources */,
+				B117876D2C4A5B66003BB838 /* Frameworks */,
+				B117876E2C4A5B66003BB838 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B11787772C4A5B66003BB838 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B11787712C4A5B66003BB838 /* DownloadRecipeAppDemoUITests */,
+			);
+			name = DownloadRecipeAppDemoUITests;
+			packageProductDependencies = (
+			);
+			productName = DownloadRecipeAppDemoUITests;
+			productReference = B11787702C4A5B66003BB838 /* DownloadRecipeAppDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		B1B980472C480403009D0A28 /* DownloadRecipeAppDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1B9806E2C480404009D0A28 /* Build configuration list for PBXNativeTarget "DownloadRecipeAppDemo" */;
@@ -126,6 +167,10 @@
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					B117876F2C4A5B66003BB838 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B1B980472C480403009D0A28;
+					};
 					B1B980472C480403009D0A28 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -153,11 +198,19 @@
 			targets = (
 				B1B980472C480403009D0A28 /* DownloadRecipeAppDemo */,
 				B1B980592C480404009D0A28 /* DownloadRecipeAppDemoTests */,
+				B117876F2C4A5B66003BB838 /* DownloadRecipeAppDemoUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B117876E2C4A5B66003BB838 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1B980462C480403009D0A28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +228,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B117876C2C4A5B66003BB838 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1B980442C480403009D0A28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +252,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B11787772C4A5B66003BB838 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B980472C480403009D0A28 /* DownloadRecipeAppDemo */;
+			targetProxy = B11787762C4A5B66003BB838 /* PBXContainerItemProxy */;
+		};
 		B1B9805C2C480404009D0A28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B1B980472C480403009D0A28 /* DownloadRecipeAppDemo */;
@@ -200,6 +265,40 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B11787792C4A5B66003BB838 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X58DADG5RV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magic.DownloadRecipeAppDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DownloadRecipeAppDemo;
+			};
+			name = Debug;
+		};
+		B117877A2C4A5B66003BB838 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X58DADG5RV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magic.DownloadRecipeAppDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DownloadRecipeAppDemo;
+			};
+			name = Release;
+		};
 		B1B9806C2C480404009D0A28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -418,6 +517,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B11787782C4A5B66003BB838 /* Build configuration list for PBXNativeTarget "DownloadRecipeAppDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B11787792C4A5B66003BB838 /* Debug */,
+				B117877A2C4A5B66003BB838 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B1B980432C480403009D0A28 /* Build configuration list for PBXProject "DownloadRecipeAppDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

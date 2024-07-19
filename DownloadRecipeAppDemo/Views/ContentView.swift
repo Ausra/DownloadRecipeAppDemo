@@ -25,15 +25,16 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
-                        .accessibilityLabel("Edit")
                         .accessibilityHint("Edit the list of recipes")
+                        .accessibilityLabel("Edit")
                 }
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Recipe", systemImage: "plus")
-                            .accessibilityLabel("Add Recipe")
-                            .accessibilityHint("Add a new recipe")
-                    }
+
+
+                    } .accessibilityHint("Add a new recipe")
+                        .accessibilityLabel("Add Recipe")
                 }
             }
             .sheet(
