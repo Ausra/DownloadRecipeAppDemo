@@ -94,28 +94,6 @@ final class RecipeModelTests {
         let decoder = JSONDecoder()
         let parsedRecipe = try decoder.decode(ParsedRecipe.self, from: parsedRecipeJSON)
 
-        // Mock DataLoader
-        struct DataLoaderMock: DataLoaderProtocol {
-            var result: Result<Data, Error>?
-
-            init(result: Result<Data, Error>?) {
-                self.result = result
-            }
-
-            func loadData(from urlString: String) async throws -> Data? {
-                return try result?.get()
-            }
-        }
-
-        struct NetworkingMock: Networking {
-            var result = Result<Data, Error>.success(Data())
-
-            func data(
-                from url: URL
-            ) async throws -> (Data, URLResponse) {
-                try (result.get(), URLResponse())
-            }
-        }
 
         let mockNetworking = NetworkingMock(result: .success(parsedRecipeJSON))
         let dataLoader = DataLoader(networking: mockNetworking)
@@ -158,3 +136,4 @@ final class RecipeModelTests {
     }
 
 }
+

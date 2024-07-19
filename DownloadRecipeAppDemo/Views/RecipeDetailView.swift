@@ -6,11 +6,13 @@ struct RecipeDetailView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 10) {
-                RecipeImageView(image: recipe.viewHeaderImage)
-                RecipeTitleView(title: recipe.title)
-                RecipeIngredientsView(ingredients: recipe.ingredients ?? [])
-                RecipeStepsView(steps: recipe.steps ?? [])
+            LazyVStack {
+                VStack {
+                    RecipeImageView(image: recipe.viewHeaderImage)
+                    RecipeTitleView(title: recipe.title)
+                    RecipeIngredientsView(ingredients: recipe.ingredients ?? [])
+                    RecipeStepsView(steps: recipe.steps ?? [])
+                }
             }
         }
     }
@@ -33,6 +35,7 @@ private struct RecipeIngredientsView: View {
     var ingredients: [Ingredient]
     
     var body: some View {
+        
         VStack(alignment: .leading) {
             Text("Ingredients")
                 .font(.headline)
@@ -92,13 +95,26 @@ private struct RecipeImageView: View {
 }
 
 #if DEBUG
-#Preview {
+#Preview("With Image") {
     let container = Recipe.preview
     
     let recipes = try? container.mainContext.fetch(
         FetchDescriptor<Recipe>(
             predicate: #Predicate { recipe in
                 recipe.title == "Cottage Cheeze Pie"
+            }))
+    
+    return RecipeDetailView(recipe: recipes?.first ?? Recipe(title: "no value"))
+        .modelContainer(container)
+}
+
+#Preview("With Placeholder") {
+    let container = Recipe.preview
+    
+    let recipes = try? container.mainContext.fetch(
+        FetchDescriptor<Recipe>(
+            predicate: #Predicate { recipe in
+                recipe.title == "Apple Pie"
             }))
     
     return RecipeDetailView(recipe: recipes?.first ?? Recipe(title: "no value"))

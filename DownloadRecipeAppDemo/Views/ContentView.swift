@@ -39,7 +39,7 @@ struct ContentView: View {
             }
             .sheet(
                 isPresented: $downloadRecipeSheetPresent,
-                content: { DownloadFromURLSheetView() }
+                content: { DownloadFromURLSheetView(modelContext: modelContext) }
             )
             .navigationTitle("Recipes")
             .accessibilityElement(children: .contain)

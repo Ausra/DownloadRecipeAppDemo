@@ -1,21 +1,31 @@
 import SwiftUI
+import SwiftData
 import RecipeScraper
 
 struct DownloadFromURLSheetView: View {
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-
-    @State private var url: String = ""
-    @State private var recipe: Recipe?
-    @State private var errorMessage: String?
-    @State private var isLoading: Bool = false
-
+    
+    @State private var viewModel: DownloadRecipeViewModel
+    var modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        let dataLoader = DataLoader()
+        let scraper = RecipeScraper()
+        let viewModel = DownloadRecipeViewModel(
+            modelContext: modelContext,
+            scraper: scraper,
+            dataLoader: dataLoader
+        )
+        _viewModel = State(initialValue: viewModel)
+        self.modelContext = modelContext
+    }
+    
     @FocusState private var isFocused: Bool
-
+    
     var body: some View {
         NavigationStack {
             Form {
-                if let errorMessage = errorMessage {
+                if let errorMessage = viewModel.errorMessage {
                     Section {
                         Text(errorMessage)
                             .foregroundColor(.red)
@@ -25,7 +35,7 @@ struct DownloadFromURLSheetView: View {
                 }
                 Section(
                     content: {
-                        TextField("Enter the link", text: $url)
+                        TextField("Enter the link", text: $viewModel.url)
                             .focused($isFocused)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
@@ -47,14 +57,17 @@ struct DownloadFromURLSheetView: View {
             .toolbar(
                 content: {
                     ToolbarItem(placement: .confirmationAction) {
-                        if isLoading {
+                        if viewModel.isLoading {
                             ProgressView()
                                 .accessibilityLabel("Loading")
                                 .accessibilityHint("Downloading the recipe")
                         } else {
                             Button("Download") {
                                 Task {
-                                    await scrapeRecipe()
+                                    await viewModel.scrapeRecipe()
+                                    if viewModel.recipe != nil {
+                                        dismiss()
+                                    }
                                 }
                             }
                             .accessibilityLabel("Download")
@@ -71,40 +84,16 @@ struct DownloadFromURLSheetView: View {
                             .accessibilityHint("Dismiss the download recipe view")
                         })
                 })
-
+            
         }
-
-    }
-
-    @MainActor
-    private func scrapeRecipe() async {
-        guard !url.isEmpty, let validURL = URL(string: url) else {
-            self.errorMessage = "Please enter a valid URL."
-            return
-        }
-
-        isLoading = true
-        let dataLoader = DataLoader()
-        let scraper = RecipeScraper()
-
-        do {
-            let scrapedRecipe = try await scraper.scrapeRecipe(from: validURL.absoluteString)
-            self.recipe = await Recipe(from: scrapedRecipe, using: dataLoader)
-
-            self.errorMessage = nil
-        } catch {
-            self.errorMessage = error.localizedDescription
-            self.recipe = nil
-        }
-
-        isLoading = false
-        if let newRecipe = recipe {
-            modelContext.insert(newRecipe)
-            dismiss()
-        }
+        
     }
 }
 
+#if DEBUG
 #Preview {
-    DownloadFromURLSheetView()
+    let container = Recipe.preview
+    
+    DownloadFromURLSheetView(modelContext: container.mainContext)
 }
+#endif

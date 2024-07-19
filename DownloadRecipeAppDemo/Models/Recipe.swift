@@ -53,19 +53,7 @@ final class Recipe {
         self.prepTime = prepTime
         self.cookTime = cookTime
     }
-}
 
-extension Recipe {
-    var viewHeaderImage: UIImage? {
-        if let data = headerImage?.data {
-            return UIImage(data: data) ?? nil
-        } else {
-            return nil
-        }
-    }
-}
-
-extension Recipe {
     convenience init(from parsedRecipe: ParsedRecipe, using dataLoader: DataLoader) async {
         self.init()
         self.title = parsedRecipe.name ?? "Unknown Title"
@@ -102,6 +90,14 @@ extension Recipe {
             } catch {
                 print("Failed to download image: \(error)")
             }
+        }
+    }
+
+    var viewHeaderImage: UIImage? {
+        if let data = headerImage?.data {
+            return UIImage(data: data) ?? nil
+        } else {
+            return nil
         }
     }
 }
