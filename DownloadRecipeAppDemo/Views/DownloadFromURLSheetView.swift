@@ -4,10 +4,10 @@ import RecipeScraper
 
 struct DownloadFromURLSheetView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var viewModel: DownloadRecipeViewModel
     var modelContext: ModelContext
-    
+
     init(modelContext: ModelContext) {
         let dataLoader = DataLoader()
         let scraper = RecipeScraper()
@@ -19,9 +19,9 @@ struct DownloadFromURLSheetView: View {
         _viewModel = State(initialValue: viewModel)
         self.modelContext = modelContext
     }
-    
+
     @FocusState private var isFocused: Bool
-    
+
     var body: some View {
         NavigationStack {
             Form {
@@ -84,16 +84,15 @@ struct DownloadFromURLSheetView: View {
                             .accessibilityHint("Dismiss the download recipe view")
                         })
                 })
-            
         }
-        
+
     }
 }
 
 #if DEBUG
 #Preview {
     let container = Recipe.preview
-    
+
     DownloadFromURLSheetView(modelContext: container.mainContext)
 }
 #endif
