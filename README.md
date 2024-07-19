@@ -40,15 +40,15 @@ The Recipe App is a SwiftUI-based application that allows users to manage their 
 1. Tap the "Edit" button on the navigation bar.
 2. Select the recipes you want to delete and tap the delete button.
 
-### Code Overview
-## ContentView
+## Code Overview
+### ContentView
 The main view displaying the list of recipes.
 ```swift
 struct ContentView: View {
     // ...
 }
 ```
-## DownloadFromURLSheetView
+### DownloadFromURLSheetView
 The view presented as a sheet for downloading recipes from a URL.
 ```swift
 struct DownloadFromURLSheetView: View {
@@ -56,14 +56,14 @@ struct DownloadFromURLSheetView: View {
 }
 ```
 
-## RecipeDetailView
+### RecipeDetailView
 The view displaying detailed information about a selected recipe.
 ```swift
 struct RecipeDetailView: View {
     // ...
 }
 ```
-## Recipe Model
+### Recipe Model
 Defines the properties of a recipe.
 ```swift
 @Model
@@ -71,7 +71,7 @@ final class Recipe {
     // ...
 }
 ```
-## DownloadRecipeViewModel
+### DownloadRecipeViewModel
 Handles the logic for downloading and saving a recipe.
 ```swift
 @Observable
@@ -79,7 +79,7 @@ class DownloadRecipeViewModel {
     // ...
 }
 ```
-## Accessibility
+### Accessibility
 The app includes accessibility labels, hints, and values to ensure a smooth experience for users with disabilities. For example:
 ```swift
 .accessibilityLabel("Recipe title")
