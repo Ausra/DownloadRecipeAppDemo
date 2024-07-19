@@ -1,6 +1,6 @@
 # Download Recipe Demo App
 
-The Recipe App is a SwiftUI-based application that allows users to manage their recipes. Users can add recipes by downloading them from URLs, view detailed recipe information, and delete recipes. The app leverages `SwiftData` for data persistence and `RecipeScraper` for fetching recipe details from the web.
+This is a SwiftUI-based application that allows users to manage their recipes. Users can add recipes by downloading them from URLs, view detailed recipe information, and delete recipes. It has been built to show case the [RecipeScraper](https://github.com/Ausra/RecipeScraper) and [JSONLDDecoder](https://github.com/Ausra/JSONLDDecoder) packaged in action. The app also leverages `SwiftData` for data persistence.
 
 ## Features
 
@@ -8,6 +8,10 @@ The Recipe App is a SwiftUI-based application that allows users to manage their 
 - **View Recipes**: Display a list of recipes and view detailed information for each recipe.
 - **Delete Recipes**: Remove recipes from the app.
 - **Accessibility**: The app includes accessibility features for better usability.
+
+## Demo
+A recipe has been scraped and image downloaded from the following website: 
+https://www.bbcgoodfood.com/recipes/cupcakes
 
   ![demoApp](https://github.com/Ausra/DownloadRecipeAppDemo/blob/main/DownloadRecipeDemo.gif)
 
