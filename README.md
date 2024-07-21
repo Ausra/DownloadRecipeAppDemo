@@ -10,7 +10,7 @@ This is a SwiftUI-based application that allows users to manage their recipes. U
 - **Accessibility**: The app includes accessibility features for better usability.
 
 ## Demo
-A recipe has been scraped and image downloaded from the following website: 
+A recipe has been scraped and the image has been downloaded from the following website: 
 https://www.bbcgoodfood.com/recipes/cupcakes
 
   ![demoApp](https://github.com/Ausra/DownloadRecipeAppDemo/blob/main/DownloadRecipeDemo.gif)
